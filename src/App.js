@@ -6,10 +6,13 @@ import {
     Redirect,
     Link
 } from "react-router-dom";
+import { Provider } from 'react-redux';
+import store from '@/store';
 import LoadingPage from "@/components/LoadingPage";
 import config from "./router";
 
 import S from './index.m.less';
+
 
 const renderRoutes = routes => {
   if (!Array.isArray(routes)) {
@@ -61,6 +64,7 @@ const renderRoutes = routes => {
 export default class App extends Component {
     render() {
         return (
+          <Provider store={store}>
             <div className={S.app}>
                 <Router>
                     <ul>
@@ -77,6 +81,7 @@ export default class App extends Component {
                     {renderRoutes(config)}
                 </Router>
             </div>
+          </Provider>  
         )
     }
 };

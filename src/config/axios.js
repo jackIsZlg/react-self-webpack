@@ -5,7 +5,7 @@ import qs from 'qs'
 axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 axios.defaults.baseURL = '/api';
-axios.defaults.withCredentials = true; //是否携带cookies发起请求
+// axios.defaults.withCredentials = true; //是否携带cookies发起请求
 //axios.defaults.responseType = 'json';
 
 axios.interceptors.request.use((config) => {
@@ -57,10 +57,10 @@ class Server {
                 data: params,
                 ...params
             }
+            console.log(_option);
             axios.request(_option).then(res => {
-                if(res.data.code == 0){
-                    resolve(typeof res.data === 'object' ? res.data : JSON.parse(res.data))
-                }else {
+                // 默认统一报错
+                if (showError && res.data.code != 0) {
                     store.dispatch({
                         type: 'RequestError',
                         result: {
@@ -68,9 +68,10 @@ class Server {
                             ...res
                         }
                     })
-                    reject(typeof res.data === 'object' ? res.data : JSON.parse(res.data))
+                    // reject(typeof res.data === 'object' ? res.data : JSON.parse(res.data))
+                    // return;
                 }
-                // store.dispatch(addCount())
+                resolve(typeof res.data === 'object' ? res.data : JSON.parse(res.data))
             },error => {
                 if(error.response){
                     reject(error.response.data)

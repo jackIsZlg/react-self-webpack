@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import {
     addCount,
-    addExact,
     delCount,
-    delExact,
-    addItem
 }  from '@/store/sync/action';
 
 import S from './index.m.less';
@@ -16,8 +12,9 @@ class Home extends Component {
         this.getData();
     }
 
-    getData() {
-        const data = await React.$axios('post', 'http://122.51.66.155:3000/post/user', {});
+    async getData() {
+        // showError为false的时候就自己来处理错误
+        const data = await React.$axios('post', 'http://122.51.66.155:3000/post/user', { showError: false });
         const list = await React.$axios('GET', 'http://122.51.66.155:3000/list');
     }
 

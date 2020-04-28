@@ -7,7 +7,8 @@ React Router附带了一些hooks钩子，可让您访问路由器的状态并从
 ** useParams
 ** useRouteMatch
 
-
+```javascript
+// 用法
 const history = useHistory();
 history.push("/home");
 
@@ -21,4 +22,5 @@ function usePageViews() {
 const { slug } = useParams();
 
 const match = useRouteMatch("/blog/:slug");
+```
 

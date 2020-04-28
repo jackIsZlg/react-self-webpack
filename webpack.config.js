@@ -1,24 +1,25 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const isDev = process.env.NODE_ENV === 'development'; 
+
+const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
     mode: 'development',
     entry: './src/index.js',
-    devtool: isDev ? 'cheap-module-eval-source-map' : 'source-map', //开发环境下使用
+    devtool: isDev ? 'cheap-module-eval-source-map' : 'source-map', // 开发环境下使用
     output: {
-        path: path.resolve(__dirname, 'dist'), //必须是绝对路径
+        path: path.resolve(__dirname, 'dist'), // 必须是绝对路径
         filename: '[name].[hash].js',
         // publicPath: '/' //通常是CDN地址
     },
     devServer: {
-        port: '3000', //默认是8080
-        quiet: false, //默认不启用
-        inline: true, //默认开启 inline 模式，如果设置为false,开启 iframe 模式
-        stats: "errors-only", //终端仅打印 error
-        overlay: false, //默认不启用
-        clientLogLevel: "silent", //日志等级
-        compress: true //是否启用 gzip 压缩
+        port: '3000', // 默认是8080
+        quiet: false, // 默认不启用
+        inline: true, // 默认开启 inline 模式，如果设置为false,开启 iframe 模式
+        stats: 'errors-only', // 终端仅打印 error
+        overlay: false, // 默认不启用
+        clientLogLevel: 'silent', // 日志等级
+        compress: true // 是否启用 gzip 压缩
     },
     resolve: {
         alias: {
@@ -71,21 +72,12 @@ module.exports = {
             // 以.less/.css为结尾的配置使用(排出使用.m.less)
             {
                 test: /((?!m).).(le|c)ss$/,
-                use: ['style-loader', 'css-loader', {
-                    loader: 'postcss-loader',
-                    options: {
-                        plugins: function () {
-                            return [
-                                require('autoprefixer')({
-                                    "overrideBrowserslist": [
-                                        ">0.25%",
-                                        "not dead"
-                                    ]
-                                })
-                            ]
-                        }
-                    }
-                }, 'less-loader'],
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader',
+                    'less-loader'
+                ],
                 exclude: /node_modules/
             },
             {
@@ -94,7 +86,7 @@ module.exports = {
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 10240, //10K
+                            limit: 10240, // 10K
                             esModule: false,
                             name: '[name]_[hash:6].[ext]'
                         }
@@ -111,22 +103,22 @@ module.exports = {
     },
     optimization: {
         runtimeChunk: {
-          name: "manifest"
+          name: 'manifest'
         },
         splitChunks: {
-          chunks: "all", //默认只作用于异步模块，为`all`时对所有模块生效,`initial`对同步模块有效
+          chunks: 'all', // 默认只作用于异步模块，为`all`时对所有模块生效,`initial`对同步模块有效
         //   minSize: 30000, // 形成一个新代码块最小的体积
           cacheGroups: {
             vendors: { // 项目基本框架等
                 chunks: 'all',
-                test: /[\\/]node_modules[\\/](react|react-dom|react-dom-router|babel-polyfill|mobx|mobx-react|mobx-react-dom|antd|@ant-design)/,
+                test: /[\\/]node_modules[\\/](react|react-dom|react-dom-router|babel-polyfill|redux|react-redux|axios)/,
                 priority: 100, // 优先级
                 minChunks: 1, // 最少引入的次数
                 name: 'vendors',
             },
             asyncCommons: { // 异步加载公共包、组件等
                 chunks: 'async',
-                minChunks: 2, // 
+                minChunks: 2, //
                 name: 'asyncCommons',
                 priority: 90,
             },
@@ -141,25 +133,25 @@ module.exports = {
                 test: /[\\/]node_modules[\\/](react-codemirror|codemirror)/,
                 minChunks: 1,
                 priority: 2,
-                name: "codemirror"
+                name: 'codemirror'
             },
           }
         }
     },
     plugins: [
-        //不需要传参数喔，它可以找到 outputPath
+        // 不需要传参数喔，它可以找到 outputPath
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './public/index.html',
-            filename: 'index.html', //打包后的文件名
+            filename: 'index.html', // 打包后的文件名
             minify: {
-                removeAttributeQuotes: false, //是否删除属性的双引号
-                collapseWhitespace: false, //是否折叠空白
+                removeAttributeQuotes: false, // 是否删除属性的双引号
+                collapseWhitespace: false, // 是否折叠空白
             },
             config: {
                 name: 'react'
             }
             // hash: true //是否加上hash，默认是 false
         })
-    ]      
-}
+    ]
+};

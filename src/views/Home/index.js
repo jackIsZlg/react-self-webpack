@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
     addCount,
-    delCount,
-}  from '@/store/sync/action';
+    delCount
+} from '@/store/sync/action';
 
 import S from './index.m.less';
 
@@ -11,7 +11,7 @@ class Home extends Component {
     componentDidMount() {
         this.getData();
     }
-
+    
     async getData() {
         // showError为false的时候就自己来处理错误
         const data = await React.$axios('post', 'http://122.51.66.155:3000/post/user', { showError: false });
@@ -24,7 +24,8 @@ class Home extends Component {
             <div className={S.home}>
                 home
                 <div className={S.num}>
-                    当前统计到的数值：{count}
+                    当前统计到的数值：
+                    {count}
                 </div>
                 <button onClick={addCount}>增加</button>
                 <button onClick={delCount}>删除</button>
@@ -33,25 +34,20 @@ class Home extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        count: state.reducer.count,
-        items: state.todos
-    }
-};
+const mapStateToProps = (state) => ({
+    count: state.reducer.count,
+    items: state.todos
+});
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addCount: () => {
-            dispatch(addCount())
-        },
-        delCount: () => {
-            dispatch(delCount())
-        },
-        // delExact: (parmas) => {
-        //     dispatch(delExact(parmas))
-        // },
-    }
-};
+const mapDispatchToProps = (dispatch) => ({
+    addCount: () => {
+        dispatch(addCount());
+    },
+    delCount: () => {
+        dispatch(delCount());
+    },
+    // delExact: (parmas) => {
+    //     dispatch(delExact(parmas))
+    // },
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
-

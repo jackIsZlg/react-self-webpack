@@ -13,12 +13,12 @@ const prodConfig = {
     optimization: {
         splitChunks: {
             cacheGroups: {
-                // 提取公共部分的css进行合并，暂时关闭
+                // 提取所有的css进行合并变成一个，暂时关闭
                 // styles: {
                 //     name: 'styles',
                 //     test: /\.(le|c)ss$/,
                 //     chunks: 'all',
-                //     enforce: true,
+                //     enforce: true, // 强制切分到这个块, 可以不受上面miniSize等的控制
                 //     priority: 80,
                 //     minChunks: 1,
                 // },

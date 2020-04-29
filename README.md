@@ -24,3 +24,9 @@ const { slug } = useParams();
 const match = useRouteMatch("/blog/:slug");
 ```
 
+在 webpack 中 css import 使用 alias 相对路径的解决办法有两种：
+
+直接为 css-loader 添加 alias 的路径。
+
+在引用路径的字符串前面加上 ~ 的符号，如：@import “~@/…”。webpack 会以~符号作为前缀的路径视为依赖模块去解析。
+

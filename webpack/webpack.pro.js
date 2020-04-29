@@ -2,6 +2,7 @@ const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const WebpackBar = require('webpackbar');
 
 const baseConfig = require('./webpack.base');
 const { assetsPath } = require('./utils');
@@ -10,6 +11,19 @@ const prodConfig = {
     mode: 'production',
     devtool: 'nosources-source-map', // source-map 是完整的不过体积大很多
     optimization: {
+        splitChunks: {
+            cacheGroups: {
+                // 提取公共部分的css进行合并，暂时关闭
+                // styles: {
+                //     name: 'styles',
+                //     test: /\.(le|c)ss$/,
+                //     chunks: 'all',
+                //     enforce: true,
+                //     priority: 80,
+                //     minChunks: 1,
+                // },
+            }
+        },
         minimizer: [
             // 用来压缩 js 代码
             new TerserPlugin({
@@ -28,12 +42,12 @@ const prodConfig = {
             }),
             // 用来压缩css代码
             new OptimizeCssAssetsPlugin({
-                cssProcessor: require('cssnano'),
+                cssProcessor: require('cssnano'), // 指定一个优化css的处理器，默认cssnano
                 cssProcessorOptions: {
                     reduceIdents: false,
                     autoprefixer: false,
                     safe: true,
-                    discardComments: {
+                    discardComments: { // 对注释的处理
                         removeAll: true
                     }
                 }
@@ -41,6 +55,8 @@ const prodConfig = {
         ]
     },
     plugins: [
+        // 添加进度条
+        new WebpackBar(),
         new MiniCssExtractPlugin({
             filename: assetsPath('css/[name].[contenthash:8].css'),
             chunkFilename: assetsPath('css/[name].[id].[contenthash:8].css')

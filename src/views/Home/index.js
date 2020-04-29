@@ -24,8 +24,8 @@ class Home extends Component {
                     当前统计到的数值：
                     {count}
                 </div>
-                <button onClick={addCount1}>增加</button>
-                <button onClick={delCount1}>删除</button>
+                <button className={S.button} onClick={addCount1}>增加</button>
+                <button className={S.button} onClick={delCount1}>删除</button>
             </div>
         );
     }

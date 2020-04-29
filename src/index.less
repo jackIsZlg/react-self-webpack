@@ -1,4 +1,37 @@
-body {
-    background-color: white;
+html,body {
+    margin: 0 auto;
+    padding: 0 !important;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    color: #323232;
+    background: #F4F6F6;
+    font-family: "wptFontMain" !important;
     // background-image: url('../image/123.jpg');
 }
+  
+*{
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) ;
+    -webkit-tap-highlight-color: transparent ;
+}
+  
+input,textarea{
+    outline: none;
+    color: #333333;
+    font-family: "wptFontMain" !important;
+    caret-color: #AB3B3A;
+    &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: #C8C8C8;
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: #C8C8C8;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: #C8C8C8;
+    }
+}
+  
+.button{
+    cursor: pointer;
+}
+  

@@ -12,7 +12,8 @@ const devConfig = {
         stats: 'errors-only', // 终端仅打印 error
         overlay: false, // 默认不启用
         clientLogLevel: 'silent', // 日志等级
-        compress: true // 是否启用 gzip 压缩
+        compress: true, // 是否启用 gzip 压缩
+        progress: true, // 开启进度条
     },
 };
 

@@ -1,25 +1,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
-    mode: 'development',
     entry: './src/index.js',
-    devtool: isDev ? 'cheap-module-eval-source-map' : 'source-map', // 开发环境下使用
     output: {
-        path: path.resolve(__dirname, 'dist'), // 必须是绝对路径
-        filename: '[name].[hash].js',
+        path: path.resolve(__dirname, '../dist'), // 必须是绝对路径
+        filename: 'js/[name].[hash].js',
         // publicPath: '/' //通常是CDN地址
-    },
-    devServer: {
-        port: '3000', // 默认是8080
-        quiet: false, // 默认不启用
-        inline: true, // 默认开启 inline 模式，如果设置为false,开启 iframe 模式
-        stats: 'errors-only', // 终端仅打印 error
-        overlay: false, // 默认不启用
-        clientLogLevel: 'silent', // 日志等级
-        compress: true // 是否启用 gzip 压缩
     },
     resolve: {
         alias: {
@@ -46,12 +36,15 @@ module.exports = {
             {
                 test: /\.m\.less/,
                 use: [
-                    {
+                    isDev ? {
                         loader: 'style-loader',
                         options: {
                             // hmr: dev, // 是否为热更新样式（最新版本已经没有了）
                         }
-                    },
+                    }
+                        : {
+                            loader: MiniCssExtractPlugin.loader,
+                        },
                     {
                         loader: 'css-loader',
                         options: {
@@ -73,7 +66,7 @@ module.exports = {
             {
                 test: /((?!m).).(le|c)ss$/,
                 use: [
-                    'style-loader',
+                    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'css-loader',
                     'postcss-loader',
                     'less-loader'
@@ -103,39 +96,44 @@ module.exports = {
     },
     optimization: {
         runtimeChunk: {
-          name: 'manifest'
+            name: 'manifest'
         },
         splitChunks: {
-          chunks: 'all', // 默认只作用于异步模块，为`all`时对所有模块生效,`initial`对同步模块有效
-        //   minSize: 30000, // 形成一个新代码块最小的体积
-          cacheGroups: {
-            vendors: { // 项目基本框架等
-                chunks: 'all',
-                test: /[\\/]node_modules[\\/](react|react-dom|react-dom-router|babel-polyfill|redux|react-redux|axios)/,
-                priority: 100, // 优先级
-                minChunks: 1, // 最少引入的次数
-                name: 'vendors',
-            },
-            asyncCommons: { // 异步加载公共包、组件等
-                chunks: 'async',
-                minChunks: 2, //
-                name: 'asyncCommons',
-                priority: 90,
-            },
-            commons: { // 其他同步加载公共包
+            chunks: 'all', // 默认只作用于异步模块，为`all`时对所有模块生效,`initial`对同步模块有效
+            // minSize: 30000, // 默认值，新 chunk 产生的最小限制 整数类型（以字节为单位）
+            // maxSize: 0, // 默认值，新 chunk 产生的最大限制，0为无限 整数类型（以字节为单位）
+            // minChunks: 1, // 默认值，新 chunk 被引用的最少次数
+            // maxAsyncRequests: 5, // 默认值，按需加载的 chunk，最大数量
+            // maxInitialRequests: 3, // 默认值，初始加载的 chunk，最大数量
+            // name: true, // 默认值，控制 chunk 的命名
+            cacheGroups: {
+                vendors: { // 项目基本框架等
+                    chunks: 'all',
+                    test: /[\\/]node_modules[\\/](react|react-dom|react-dom-router|babel-polyfill|redux|react-redux|axios)/,
+                    priority: 100, // 优先级
+                    minChunks: 1, // 最少引入的次数
+                    name: 'vendors',
+                },
+                asyncCommons: { // 异步加载公共包、组件等
+                    chunks: 'async',
+                    minChunks: 2, //
+                    name: 'asyncCommons',
+                    priority: 90,
+                },
+                commons: { // 其他同步加载公共包
                 // chunks: 'all',
-                test: /[\\/]node_modules[\\/]/,
-                minChunks: 2, // 最少引入2次的才放入
-                name: 'commons',
-                priority: 80,
-            },
-            codeMirror: {
-                test: /[\\/]node_modules[\\/](react-codemirror|codemirror)/,
-                minChunks: 1,
-                priority: 2,
-                name: 'codemirror'
-            },
-          }
+                    test: /[\\/]node_modules[\\/]/,
+                    minChunks: 1, // 最少引入1次的才放入
+                    name: 'commons',
+                    priority: 80,
+                },
+                codeMirror: {
+                    test: /[\\/]node_modules[\\/](react-codemirror|codemirror)/,
+                    minChunks: 1,
+                    priority: 2,
+                    name: 'codemirror'
+                },
+            }
         }
     },
     plugins: [

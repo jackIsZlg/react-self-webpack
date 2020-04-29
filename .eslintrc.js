@@ -26,7 +26,7 @@ module.exports = {
       // eslint不识别webpack的路径别名，需要插件：eslint-import-resolver-webpack
       'import/resolver': {
           webpack: {
-              config: path.resolve(__dirname, 'webpack.config.js'),
+              config: path.resolve(__dirname, 'webpack/webpack.base.js'),
           },
       },
     },
@@ -72,12 +72,15 @@ module.exports = {
               SwitchCase: 1,
           },
       ],
+      'global-require': 0,
       // 取消import有始终需要扩展名
       'import/extensions': ['error', 'always', {
         'js': 'never',
         'ts': 'never',
         'vue': 'never'
       }],
+      "import/no-extraneous-dependencies": 0,
+      "no-irregular-whitespace": "off", // 这禁止掉 空格报错检查
       'max-nested-callbacks': 'off',
       'react/no-children-prop': 'off',
       'typescript/member-ordering': 'off',
@@ -206,4 +209,3 @@ module.exports = {
       'import/prefer-default-export': 0,
     }
 }
-  

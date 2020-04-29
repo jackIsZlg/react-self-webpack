@@ -1,4 +1,4 @@
-module.exports = function(api) {
+module.exports = function babelConfig(api) {
     api.cache(true);
     const presets = [
         [
@@ -16,8 +16,9 @@ module.exports = function(api) {
     const plugins = [
         '@babel/plugin-transform-runtime',
     ];
+    
     return {
         presets,
         plugins
     };
-} 
+};

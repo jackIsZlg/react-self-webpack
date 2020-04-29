@@ -1,4 +1,4 @@
-import React, { Suspense, Component, lazy } from 'react';
+import React, { Suspense, Component } from 'react';
 import {
     HashRouter as Router,
     Route,

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-    addCount,
-    delCount
-} from '@/store/sync/action';
+import { addCount, delCount } from '@/store/sync/action';
 
 import S from './index.m.less';
 
@@ -19,7 +16,7 @@ class Home extends Component {
     }
 
     render() {
-        const { count, addCount, delCount } = this.props;
+        const { count, addCount1, delCount1 } = this.props;
         return (
             <div className={S.home}>
                 home
@@ -27,8 +24,8 @@ class Home extends Component {
                     当前统计到的数值：
                     {count}
                 </div>
-                <button onClick={addCount}>增加</button>
-                <button onClick={delCount}>删除</button>
+                <button onClick={addCount1}>增加</button>
+                <button onClick={delCount1}>删除</button>
             </div>
         );
     }
@@ -40,10 +37,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    addCount: () => {
+    addCount1: () => {
         dispatch(addCount());
     },
-    delCount: () => {
+    delCount1: () => {
         dispatch(delCount());
     },
     // delExact: (parmas) => {

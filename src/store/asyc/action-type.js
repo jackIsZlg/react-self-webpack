@@ -8,13 +8,13 @@ export const WaitBegin = 'WaitBegin';
 export const WaitEnd = 'WaitEnd';
 
 // 接口请求一开始等待
-export const RequestLoad = 'RequestLoad'
+export const RequestLoad = 'RequestLoad';
 
 // 接口请求成功返回结果
-export const RequestResult = 'RequestResult'
+export const RequestResult = 'RequestResult';
 
 // 接口请求成功返回失败
-export const RequestError = 'RequestError'
+export const RequestError = 'RequestError';
 
 // 接口清空所有的信息
-export const RequestClear = 'RequestClear'
+export const RequestClear = 'RequestClear';

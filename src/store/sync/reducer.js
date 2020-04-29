@@ -26,7 +26,7 @@ export function reducer(state = initState, action) {
                 count: state.count - action.parmas
             };
         default:
-            return state
+            return state;
     }
 }
 
@@ -39,21 +39,15 @@ export function todos(state = [], action) {
                     text: action.text,
                     completed: false
                 }
-            ]
+            ];
         case type.ShowTrue:
             return state.map((todo, index) => {
                 if (index === action.index) {
-                    return Object.assign({}, todo, {
-                        completed: true
-                    })
+                    return { ...todo, completed: true };
                 }
-                return todo
-            })
+                return todo;
+            });
         default:
-            return state
+            return state;
     }
 }
-
-
-
-

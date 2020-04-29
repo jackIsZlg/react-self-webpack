@@ -1,4 +1,6 @@
 // eslint 只要语法有一句错误就不生效
+// 官方地址：https://eslint.bootcss.com/docs/user-guide/getting-started
+// 规则也继承于Airbnb JavaScript Style Guide  https://github.com/airbnb/javascript
 const path = require('path');
 
 module.exports = {
@@ -52,7 +54,7 @@ module.exports = {
       // 这里填入你的项目需要的个性化配置，比如：
       // 非严格相等(===, !==)也不警告
       eqeqeq: 1,
-      // semi: ['error', 'never'], 禁止用；
+      // semi: ['error', 'never'], 禁止用语句强制分号结尾
       'no-console': 'off',
       'no-unused-vars': [
         'warn',
@@ -73,6 +75,7 @@ module.exports = {
       // 取消import有始终需要扩展名
       'import/extensions': ['error', 'always', {
         'js': 'never',
+        'ts': 'never',
         'vue': 'never'
       }],
       'max-nested-callbacks': 'off',

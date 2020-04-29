@@ -1,4 +1,4 @@
-import * as type from "../asyc/action-type";
+import * as type from './action-type';
 
 export function waitFun(state = {}, action) {
     switch (action.type) {
@@ -14,7 +14,7 @@ export function waitFun(state = {}, action) {
                 item: action.item
             };
         default:
-            return state
+            return state;
     }
 }
 
@@ -22,7 +22,7 @@ const initReq = {
     isLoading: false,
     userInfo: {},
     errorMsg: ''
-}
+};
 
 // 获取接口信息
 export function getAjaxInfo(state = initReq, action) {
@@ -56,13 +56,11 @@ export function getAjaxInfo(state = initReq, action) {
             return {
                 ...state,
                 isLoading: false,
-                userInfo:{},
-                errorMsg: "clear",
+                userInfo: {},
+                errorMsg: 'clear',
                 code: 0
-            }
+            };
         default:
             return state;
     }
 }
-
-

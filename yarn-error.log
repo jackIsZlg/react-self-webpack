@@ -1,0 +1,101 @@
+Arguments: 
+  /Users/jieke/.nvm/versions/node/v15.0.1/bin/node /Users/jieke/.nvm/versions/node/v15.0.1/bin/yarn add react-pdf
+
+PATH: 
+  /Users/jieke/.nvm/versions/node/v15.0.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.22.6
+
+Node version: 
+  15.0.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.npm.taobao.org/wpt-web-socket: Not found
+      at Request.params.callback [as _callback] (/Users/jieke/.nvm/versions/node/v15.0.1/lib/node_modules/yarn/lib/cli.js:66988:18)
+      at Request.self.callback (/Users/jieke/.nvm/versions/node/v15.0.1/lib/node_modules/yarn/lib/cli.js:140662:22)
+      at Request.emit (node:events:327:20)
+      at Request.<anonymous> (/Users/jieke/.nvm/versions/node/v15.0.1/lib/node_modules/yarn/lib/cli.js:141634:10)
+      at Request.emit (node:events:327:20)
+      at IncomingMessage.<anonymous> (/Users/jieke/.nvm/versions/node/v15.0.1/lib/node_modules/yarn/lib/cli.js:141556:12)
+      at Object.onceWrapper (node:events:433:28)
+      at IncomingMessage.emit (node:events:339:22)
+      at endReadableNT (node:internal/streams/readable:1289:12)
+      at processTicksAndRejections (node:internal/process/task_queues:80:21)
+
+npm manifest: 
+  {
+    "name": "react-self-webpack",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "export NODE_ENV=production;webpack --config webpack/webpack.pro.js",
+      "dev": "export NODE_ENV=development;webpack-dev-server --config webpack/webpack.dev.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "axios": "^0.21.1",
+      "loadable-components": "^2.2.3",
+      "qs": "^6.9.3",
+      "react": "^16.13.1",
+      "react-css-modules": "^4.7.11",
+      "react-dom": "^16.13.1",
+      "react-redux": "^7.2.0",
+      "react-router-dom": "^5.1.2",
+      "redux": "^4.0.5",
+      "redux-thunk": "^2.3.0",
+      "typescript": "^3.8.3",
+      "wpt-web-socket": "^1.0.12-1"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.9.0",
+      "@babel/plugin-syntax-class-properties": "^7.12.1",
+      "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+      "@babel/plugin-transform-runtime": "^7.9.0",
+      "@babel/preset-env": "^7.9.5",
+      "@babel/preset-react": "^7.9.4",
+      "@typescript-eslint/eslint-plugin": "^2.30.0",
+      "@typescript-eslint/parser": "^2.30.0",
+      "autoprefixer": "^9.7.6",
+      "babel-eslint": "^10.1.0",
+      "babel-loader": "^8.1.0",
+      "clean-webpack-plugin": "^3.0.0",
+      "css-loader": "^3.5.2",
+      "eslint": "^6.8.0",
+      "eslint-config-airbnb": "^18.1.0",
+      "eslint-import-resolver-webpack": "^0.12.1",
+      "eslint-plugin-import": "^2.20.2",
+      "eslint-plugin-jsx-a11y": "^6.2.3",
+      "eslint-plugin-react": "^7.19.0",
+      "eslint-plugin-react-hooks": "^2.5.1",
+      "file-loader": "^6.0.0",
+      "html-webpack-plugin": "^4.2.0",
+      "html-withimg-loader": "^0.1.16",
+      "less": "^3.11.1",
+      "less-loader": "^5.0.0",
+      "mini-css-extract-plugin": "^0.9.0",
+      "optimize-css-assets-webpack-plugin": "^5.0.3",
+      "postcss-loader": "^3.0.0",
+      "style-loader": "^1.1.4",
+      "terser-webpack-plugin": "^2.3.6",
+      "url-loader": "^4.1.0",
+      "webpack": "^4.43.0",
+      "webpack-cli": "^3.3.11",
+      "webpack-dev-server": "^3.10.3",
+      "webpack-merge": "^4.2.2",
+      "webpackbar": "^4.0.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

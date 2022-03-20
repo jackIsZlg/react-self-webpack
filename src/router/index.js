@@ -9,6 +9,9 @@ const About = lazy(() => new Promise(resolve => setTimeout(resolve, 2000)).then(
   () => import('@/views/About')
 ));
 
+const Login = lazy(() => import('@/views/Login'))
+// const Login = () => import('@/views/Login')
+
 const config = [
   {
     path: "/home",
@@ -26,6 +29,10 @@ const config = [
           component: AboutChild
       }
     ]
+  },
+  {
+    path: "/login",
+    component: Login,
   },
   { path: "/", exact: true, redirect: "/home" },
   { path: "*", exact: true, redirect: "/home" }

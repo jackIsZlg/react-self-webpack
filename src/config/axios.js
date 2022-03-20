@@ -5,8 +5,8 @@ import qs from 'qs';
 axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 axios.defaults.baseURL = '/api';
-// axios.defaults.withCredentials = true; //是否携带cookies发起请求
-// axios.defaults.responseType = 'json';
+axios.defaults.withCredentials = true; //是否携带cookies发起请求
+axios.defaults.responseType = 'json';
 
 axios.interceptors.request.use((config) => {
     if (config.method === 'post') {

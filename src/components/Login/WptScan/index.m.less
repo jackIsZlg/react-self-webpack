@@ -1,0 +1,233 @@
+// 微信扫码登录
+.pcLogin {
+    width: 320px;
+    height: 378px;
+    border-radius: 10px;
+    background-color: #fff;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-top: 39px;
+    box-sizing: border-box;
+    position: relative;
+    .title {
+        text-align: center;
+        font-size: 20px;
+        height: 20px;
+        line-height: 20px;
+        font-weight: bold;
+        color: rgba(0,0,0, 0.85);
+    }
+    .errorTip {
+        text-align: center;
+        position: absolute;
+        top: 75px;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: .9;
+        background: #3a3a3a;
+        border-radius: 3px;
+        max-width: 200px;
+        font-size: 14px;
+        min-height: 16px;
+        color: #fff;
+        word-break: break-all;
+        text-align: center;
+        padding: 10px 15px;
+        z-index: 1000;
+        width: inherit;
+    }
+    .QrCn {
+        width: 170px;
+        height: 170px;
+        margin: 32px auto 38px;
+        border:1px solid rgba(224,224,224,1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        box-sizing: border-box;
+        .QRcode {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto;
+            display: block;
+            .logo {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 30px;
+                height: 30px;
+                border-radius: 10px;
+                background-image: url('https://cdn.weipaitang.com/static/2020102468dde8c0-48fc-e8c048fc-3b4d-5601f2e9f025-W256H256');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 100%;
+                border: 3px #fff solid;
+                box-sizing: content-box;
+            }
+            .hasOut {
+                position: absolute;
+                left: -1px;
+                top: -1px;
+                width: 171px;
+                height: 171px;
+                background: rgba(255, 255, 255, 0.94);
+                .outTip {
+                    font-size: 22px;
+                    color: #333333;
+                    font-weight: 500;
+                    text-align: center;
+                    margin: 45px auto 20px;
+                    height: 27px;
+                    line-height: 27px;
+                }
+                .refresh {
+                    background-color: #BE1A2E;
+                    width: 120px;
+                    height: 35px;
+                    line-height: 35px;
+                    text-align: center;
+                    color: white;
+                    font-size: 14px;
+                    border-radius: 4px;
+                    margin: 0 auto;
+                    cursor: pointer;
+                }
+            }
+        }
+
+    }
+
+    .avatar {
+        width: 50px;
+        height: 50px;
+        background-image: url('https://cdn.weipaitang.com/static/202011036466f008-c6aa-f008c6aa-b470-a3601ee2dd0d-W200H200');
+        background-size: 100% 100%;
+        border-radius: 50px;
+        margin: 61px auto 20px;
+    }
+
+    .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 19px auto 0;
+        font-size: 14px;
+        height: 14px;
+        line-height: 14px;
+        color:rgba(0,0,0,0.65);
+        .text {
+            font-size: 14px;
+            color: black;
+            font-weight: bold;
+            margin: 0 0.02rem;
+        }
+
+    }
+
+    .helpCn {
+        height: 240px;
+        padding-top: 6px;
+        box-sizing: border-box;
+        .helpImg {
+            background-image: url('https://cdn.weipaitang.com/static/20201203eb85baff-ab6d-baffab6d-9b58-b51857f73232-W341H398');
+            background-size: 100% 100%;
+            width: 170px;
+            height: 199px;
+            display: block;
+            margin: 0 auto;
+        }
+        .helpScan {
+            height: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://cdn.weipaitang.com/static/20201209bf4e2409-bcff-2409bcff-c08b-1fcefc08a8e9-W316H28');
+            background-size: 100% 100%;
+            width: 160px;
+            margin: 8px auto 0;
+
+        }
+    }
+
+    .help {
+        text-align: center;
+        color:rgba(0,0,0,0.45);
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .scanContent {
+        text-align: center;
+        margin-top: 40px;
+        .scanSuccess {
+            font-size: 23px;
+            font-weight: 500;
+            color: #333333;
+            margin-bottom: 15px;
+            line-height: 23px;
+        }
+        .scanTip {
+            color: #999999;
+            font-size: 13px;
+        }
+    }
+}
+
+.scanConfirmPage {
+    width: 320px;
+    height: 435px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    background-color: #fff;
+    position: fixed;
+    z-index: 10000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    .avatar {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        margin: 60px auto 0 auto;
+        border-radius: 1px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 16px;
+        height: 63px;
+        line-height: 50px;
+    }
+
+    .content {
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 80px;
+        font-size: 18px;
+        color: #333;
+    }
+
+    .backBtn {
+        text-align: center;
+        color: #576b95;
+        font-size: 14px;
+    }
+}
+
+.hide {
+    display: none;
+}
